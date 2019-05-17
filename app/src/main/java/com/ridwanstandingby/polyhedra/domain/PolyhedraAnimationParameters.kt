@@ -11,9 +11,9 @@ import kotlin.random.Random
 class PolyhedraAnimationParameters(
     val numberOfPolyhedra: Int = 100,
     val maxSphereScale: Double = 2.0,
-    private val cubeLengthMin: Double = 10.0,
-    private val cubeLengthMax: Double = 200.0,
-    private val cubeLengthSkew: Double = 0.04,
+    private val cubeLengthMin: Double = 12.0,
+    private val cubeLengthMax: Double = 120.0,
+    private val cubeLengthSkew: Double = 0.05,
     private val velocityMin: Double = 10.0,
     private val velocityMax: Double = 400.0,
     private val angularVelocityMin: Double = 0.2,
@@ -25,6 +25,17 @@ class PolyhedraAnimationParameters(
             Random.nextDouble(0.0, Math.PI * 2),
             Random.nextDouble(0.0, Math.PI)
         )
+
+    fun generateRandomPolyhedron() = generateRandom(
+        when (Random.nextInt(5)) {
+            0 -> PolyhedronFactory.TETRAHEDRON
+            1 -> PolyhedronFactory.CUBE
+            2 -> PolyhedronFactory.OCTAHEDRON
+            3 -> PolyhedronFactory.DODECAHEDRON
+            4 -> PolyhedronFactory.ICOSAHEDRON
+            else -> PolyhedronFactory.CUBE
+        }
+    )
 
     fun generateRandom(polyhedron: PolyhedronFactory) = polyhedron.constructor(
         -log(

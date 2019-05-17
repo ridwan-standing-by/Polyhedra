@@ -1,6 +1,5 @@
 package com.ridwanstandingby.polyhedra.domain
 
-import com.ridwanstandingby.polyhedra.domain.polyhedra.PolyhedronFactory
 import com.ridwanstandingby.verve.animation.Animation
 
 class PolyhedraAnimation(
@@ -14,7 +13,7 @@ class PolyhedraAnimation(
         input
     ) {
 
-    private val polyhedra = List(parameters.numberOfPolyhedra) { parameters.generateRandom(PolyhedronFactory.ICOSAHEDRON) }
+    private val polyhedra = List(parameters.numberOfPolyhedra) { parameters.generateRandomPolyhedron() }
 
     init {
         input.start()
