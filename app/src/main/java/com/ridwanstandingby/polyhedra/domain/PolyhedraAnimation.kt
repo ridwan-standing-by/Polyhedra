@@ -20,13 +20,12 @@ class PolyhedraAnimation(
     }
 
     override fun update(dt: Double) {
-        renderer.camera.transform(input.getOrientation())
+        renderer.camera.updateTransform(input.getOrientation())
         renderer.lines = mutableListOf()
 
         polyhedra.forEach {
             it.update(dt)
-            it.handleBounceOffCameraSides(renderer.camera)
-            it.handleBounceOffMaximumSphere(renderer.camera, parameters.maxSphereScale)
+            it.handleBounces(renderer.camera, parameters.maxSphereScale)
             it.prepareRender(renderer)
         }
     }

@@ -22,7 +22,13 @@ abstract class Polyhedron(
         rotation += angularVelocity * dt
     }
 
-    fun handleBounceOffCameraSides(camera: Camera) {
+    fun handleBounces(camera: Camera, maxSphereScale: Double) {
+        handleBounceOffCameraSides(camera)
+        handleBounceOffMaximumSphere(camera, maxSphereScale)
+        handleBounceInScreenDirection(camera, maxSphereScale)
+    }
+
+    private fun handleBounceOffCameraSides(camera: Camera) {
         val vertices = vertices()
         velocity = when {
             vertices.any { it.x < 0 } && velocity dot camera.leftDirection > 0 ->
@@ -37,9 +43,15 @@ abstract class Polyhedron(
         }
     }
 
-    fun handleBounceOffMaximumSphere(camera: Camera, maxSphereScale: Double) {
+    private fun handleBounceOffMaximumSphere(camera: Camera, maxSphereScale: Double) {
         if (isOffScreen(camera) && isOutsideMaximumSphere(maxSphereScale, camera) && isTravellingRadiallyOutwards()) {
             velocity = velocity.reflect(position.normalise())
+        }
+    }
+
+    private fun handleBounceInScreenDirection(camera: Camera, maxSphereScale: Double) {
+        if (!isOffScreen(camera) && isOutsideMaximumSphere(maxSphereScale, camera)) {
+            velocity = velocity.reflect(camera.direction)
         }
     }
 
