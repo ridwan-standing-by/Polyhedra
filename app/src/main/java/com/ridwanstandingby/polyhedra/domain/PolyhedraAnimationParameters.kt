@@ -37,7 +37,7 @@ class PolyhedraAnimationParameters(
         }
     )
 
-    fun generateRandom(polyhedron: PolyhedronFactory) = polyhedron.constructor(
+    private fun generateRandom(polyhedron: PolyhedronFactory) = polyhedron.constructor(
         -log(
             exp(-cubeLengthMin * cubeLengthSkew) - Random.nextDouble() * (exp(
                 -cubeLengthMin * cubeLengthSkew
