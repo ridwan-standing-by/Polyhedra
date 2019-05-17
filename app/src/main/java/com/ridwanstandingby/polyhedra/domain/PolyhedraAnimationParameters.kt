@@ -9,7 +9,7 @@ import kotlin.math.log
 import kotlin.random.Random
 
 class PolyhedraAnimationParameters(
-    val numberOfCubes: Int = 100,
+    val numberOfPolyhedra: Int = 100,
     val maxSphereScale: Double = 2.0,
     private val cubeLengthMin: Double = 10.0,
     private val cubeLengthMax: Double = 200.0,

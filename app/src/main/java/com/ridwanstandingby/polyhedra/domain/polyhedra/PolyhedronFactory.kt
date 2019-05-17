@@ -12,6 +12,7 @@ enum class PolyhedronFactory(
         angularVelocity: Double
     ) -> Polyhedron
 ) {
+    TETRAHEDRON(::Tetrahedron),
     CUBE(::Cube),
     OCTAHEDRON(::Octahedron)
 }
