@@ -14,7 +14,7 @@ class PolyhedraAnimation(
         input
     ) {
 
-    private val polyhedra = List(parameters.numberOfPolyhedra) { parameters.generateRandom(PolyhedronFactory.DODECAHEDRON) }
+    private val polyhedra = List(parameters.numberOfPolyhedra) { parameters.generateRandom(PolyhedronFactory.ICOSAHEDRON) }
 
     init {
         input.start()
