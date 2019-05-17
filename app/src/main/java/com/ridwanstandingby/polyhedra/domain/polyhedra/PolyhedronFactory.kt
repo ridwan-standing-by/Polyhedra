@@ -14,5 +14,6 @@ enum class PolyhedronFactory(
 ) {
     TETRAHEDRON(::Tetrahedron),
     CUBE(::Cube),
-    OCTAHEDRON(::Octahedron)
+    OCTAHEDRON(::Octahedron),
+    DODECAHEDRON(::Dodecahedron)
 }
