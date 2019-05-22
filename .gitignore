@@ -13,3 +13,7 @@
 .externalNativeBuild
 
 \.idea/misc\.xml
+*.jks
+*.apk
+/app/release/
+/app/debug/
