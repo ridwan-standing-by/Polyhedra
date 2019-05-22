@@ -40,7 +40,7 @@ class PolyhedraAnimationParameters(
                 -cubeLengthMin * cubeLengthSkew
             ) - exp(-cubeLengthMax * cubeLengthSkew)), Math.E
         ) / cubeLengthSkew,
-        Vector3(0.0, 0.0, 0.0),
+        Vector3.O,
         (randomSph2() * Random.nextDouble(velocityMin, velocityMax)).resolve(),
         randomSph2().resolve(),
         Random.nextDouble(0.0, Math.PI * 2)
