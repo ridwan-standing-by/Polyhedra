@@ -1,7 +1,7 @@
 package com.ridwanstandingby.polyhedra.domain
 
 import com.ridwanstandingby.verve.animation.AnimationInput
-import com.ridwanstandingby.verve.sensor.RotationDetector
+import com.ridwanstandingby.verve.sensor.rotation.RotationDetector
 import com.ridwanstandingby.verve.sensor.swipe.SwipeDetector
 
 class PolyhedraAnimationInput(
@@ -16,5 +16,5 @@ class PolyhedraAnimationInput(
 
     fun getOrientation() = rotationDetector.lastKnownOrientation
 
-    fun getSwipes() = swipeDetector.swipes.also { swipeDetector.swipes = mutableListOf() }
+    fun getSwipes() = swipeDetector.swipes
 }

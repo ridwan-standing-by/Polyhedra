@@ -23,7 +23,7 @@ class PolyhedraAnimation(
     }
 
     override fun update(dt: Double) {
-        renderer.camera.updateTransform(input.getOrientation())
+        renderer.camera.updateCamera(input.getOrientation())
         renderer.lines = mutableListOf()
 
         input.getSwipes().forEach { it.resolveSwipe() }
