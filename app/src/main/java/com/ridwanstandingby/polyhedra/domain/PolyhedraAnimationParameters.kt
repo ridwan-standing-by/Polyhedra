@@ -12,7 +12,7 @@ class PolyhedraAnimationParameters(
     val numberOfPolyhedra: Int = 100,
     val maxSphereScale: Double = 2.0,
     val swipePixelRadius: Float = 120f,
-    val swipeStrength: Double = 0.2,
+    val swipeStrength: Double = 0.16,
     val velocityDecayRate: Double = 0.000008,
     val angularToLinearSpeedRatio: Double = 0.01,
     private val cubeLengthMin: Double = 12.0,
