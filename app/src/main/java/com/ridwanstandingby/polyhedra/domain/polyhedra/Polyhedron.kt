@@ -9,11 +9,11 @@ import com.ridwanstandingby.verve.sensor.swipe.Swipe
 import kotlin.math.max
 
 abstract class Polyhedron(
-    var a: Double,
-    var position: Vector3,
-    var velocity: Vector3,
-    var orientation: Vector3,
-    var rotation: Double
+    protected var a: Double,
+    protected var position: Vector3,
+    private var velocity: Vector3,
+    protected var orientation: Vector3,
+    protected var rotation: Double
 ) {
 
     private var angularVelocity: Double = 0.0
