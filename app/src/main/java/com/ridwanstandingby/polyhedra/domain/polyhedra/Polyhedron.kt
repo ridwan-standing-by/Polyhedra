@@ -18,7 +18,8 @@ abstract class Polyhedron(
 
     private val terminalVelocity = velocity.size()
 
-    abstract fun vertices(): List<FloatVector2>
+    var screenPosition: FloatVector2 = FloatVector2(0f, 0f)
+    abstract fun screenVertices(): List<FloatVector2>
 
     fun update(dt: Double, angularToLinearSpeedRatio: Double) {
         angularVelocity = velocity.size() * angularToLinearSpeedRatio
@@ -39,7 +40,7 @@ abstract class Polyhedron(
     }
 
     private fun handleBounceOffCameraSides(camera: Camera) {
-        val vertices = vertices()
+        val vertices = screenVertices()
         velocity = when {
             vertices.any { it.x < 0 } && velocity dot camera.leftDirection > 0 ->
                 velocity.reflect(camera.leftDirection)
@@ -65,7 +66,7 @@ abstract class Polyhedron(
         }
     }
 
-    private fun isOffScreen(camera: Camera) = vertices()
+    private fun isOffScreen(camera: Camera) = screenVertices()
         .none { 0 <= it.x && it.x <= camera.screenDimension.x && 0 <= it.y && it.y <= camera.screenDimension.y }
 
     private fun isOutsideMaximumSphere(maxSphereScale: Double, camera: Camera) =

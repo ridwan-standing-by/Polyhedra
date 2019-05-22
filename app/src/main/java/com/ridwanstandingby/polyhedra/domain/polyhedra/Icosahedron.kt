@@ -29,10 +29,12 @@ class Icosahedron(
     private var pho: FloatVector2 = FloatVector2(0f, 0f)
     private var mho: FloatVector2 = FloatVector2(0f, 0f)
 
-    override fun vertices() =
+    override fun screenVertices() =
         listOf(opg, omg, oph, omh, gop, gom, hop, hom, pgo, mgo, pho, mho)
 
     override fun prepareRender(renderer: PolyhedraAnimationRenderer) {
+        screenPosition = renderer.camera.project(position)
+
         val transform = Quaternion(rotation, orientation)
         opg = renderer.camera.project(position + Vector3(0.0, a, g).rotate(transform))
         omg = renderer.camera.project(position + Vector3(0.0, -a, g).rotate(transform))

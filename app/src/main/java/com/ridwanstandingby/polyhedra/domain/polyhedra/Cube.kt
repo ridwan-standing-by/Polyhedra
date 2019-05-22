@@ -22,10 +22,12 @@ class Cube(
     private var vertexPPM: FloatVector2 = FloatVector2(0f, 0f)
     private var vertexPPP: FloatVector2 = FloatVector2(0f, 0f)
 
-    override fun vertices() =
+    override fun screenVertices() =
         listOf(vertexMMM, vertexMMP, vertexMPM, vertexMPP, vertexPMM, vertexPMP, vertexPPM, vertexPPP)
 
     override fun prepareRender(renderer: PolyhedraAnimationRenderer) {
+        screenPosition = renderer.camera.project(position)
+
         val transform = Quaternion(rotation, orientation)
         vertexMMM = renderer.camera.project(position + Vector3(-a, -a, -a).rotate(transform))
         vertexMMP = renderer.camera.project(position + Vector3(-a, -a, a).rotate(transform))

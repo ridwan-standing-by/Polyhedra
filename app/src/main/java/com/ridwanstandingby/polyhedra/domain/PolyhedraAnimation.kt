@@ -37,16 +37,12 @@ class PolyhedraAnimation(
     }
 
     private fun Swipe.resolveSwipe() {
-        polyhedra.filter {
-            dist(renderer.camera.project(it.position), this.screenPosition) < parameters.swipePixelRadius
-        }.forEach {
-            it.velocity += renderer.camera.inverseTransform(
-                Vector3(
-                    this.screenVelocity.x.toDouble(),
-                    -this.screenVelocity.y.toDouble(),
-                    0.0
-                )
-            ) * parameters.swipeStrength
-        }
+        polyhedra
+            .filter { dist(it.screenPosition, this.screenPosition) < parameters.swipePixelRadius }
+            .forEach {
+                it.velocity += renderer.camera.inverseTransform(
+                    Vector3(this.screenVelocity.x.toDouble(), -this.screenVelocity.y.toDouble(), 0.0)
+                ) * parameters.swipeStrength
+            }
     }
 }

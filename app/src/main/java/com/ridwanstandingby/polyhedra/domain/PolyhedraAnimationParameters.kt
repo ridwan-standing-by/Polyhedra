@@ -22,22 +22,17 @@ class PolyhedraAnimationParameters(
     private val velocityMax: Double = 360.0
 ) : AnimationParameters() {
 
-    private fun randomSph2() =
-        SphericalVector2(
-            Random.nextDouble(0.0, Math.PI * 2),
-            Random.nextDouble(0.0, Math.PI)
-        )
+    fun generateRandomPolyhedron() = generateRandom(randomPolyhedronType())
 
-    fun generateRandomPolyhedron() = generateRandom(
-        when (Random.nextInt(5)) {
-            0 -> PolyhedronFactory.TETRAHEDRON
-            1 -> PolyhedronFactory.CUBE
-            2 -> PolyhedronFactory.OCTAHEDRON
-            3 -> PolyhedronFactory.DODECAHEDRON
-            4 -> PolyhedronFactory.ICOSAHEDRON
+    private fun randomPolyhedronType(): PolyhedronFactory =
+        when (Random.nextInt(10)) {
+            in 0..1 -> PolyhedronFactory.TETRAHEDRON
+            in 2..4 -> PolyhedronFactory.CUBE
+            in 5..7 -> PolyhedronFactory.OCTAHEDRON
+            8 -> PolyhedronFactory.DODECAHEDRON
+            9 -> PolyhedronFactory.ICOSAHEDRON
             else -> PolyhedronFactory.CUBE
         }
-    )
 
     private fun generateRandom(polyhedron: PolyhedronFactory) = polyhedron.constructor(
         -log(
@@ -50,4 +45,10 @@ class PolyhedraAnimationParameters(
         randomSph2().resolve(),
         Random.nextDouble(0.0, Math.PI * 2)
     )
+
+    private fun randomSph2() =
+        SphericalVector2(
+            Random.nextDouble(0.0, Math.PI * 2),
+            Random.nextDouble(0.0, Math.PI)
+        )
 }

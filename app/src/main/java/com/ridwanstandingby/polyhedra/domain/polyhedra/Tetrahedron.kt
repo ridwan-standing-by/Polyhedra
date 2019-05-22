@@ -18,10 +18,12 @@ class Tetrahedron(
     private var vertexPMM: FloatVector2 = FloatVector2(0f, 0f)
     private var vertexPPP: FloatVector2 = FloatVector2(0f, 0f)
 
-    override fun vertices() =
+    override fun screenVertices() =
         listOf(vertexMMP, vertexMPM, vertexPMM, vertexPPP)
 
     override fun prepareRender(renderer: PolyhedraAnimationRenderer) {
+        screenPosition = renderer.camera.project(position)
+
         val transform = Quaternion(rotation, orientation)
         vertexMMP = renderer.camera.project(position + Vector3(-a, -a, a).rotate(transform))
         vertexMPM = renderer.camera.project(position + Vector3(-a, a, -a).rotate(transform))

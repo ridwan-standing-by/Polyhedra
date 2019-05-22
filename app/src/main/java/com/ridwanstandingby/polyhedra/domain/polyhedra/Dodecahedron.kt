@@ -38,10 +38,12 @@ class Dodecahedron(
     private var gho: FloatVector2 = FloatVector2(0f, 0f)
     private var ggo: FloatVector2 = FloatVector2(0f, 0f)
 
-    override fun vertices() =
+    override fun screenVertices() =
         listOf(mmm, mmp, mpm, mpp, pmm, pmp, ppm, ppp, ohh, ohg, ogh, ogg, hoh, hog, goh, gog, hho, hgo, gho, ggo)
 
     override fun prepareRender(renderer: PolyhedraAnimationRenderer) {
+        screenPosition = renderer.camera.project(position)
+
         val transform = Quaternion(rotation, orientation)
         mmm = renderer.camera.project(position + Vector3(-a, -a, -a).rotate(transform))
         mmp = renderer.camera.project(position + Vector3(-a, -a, a).rotate(transform))

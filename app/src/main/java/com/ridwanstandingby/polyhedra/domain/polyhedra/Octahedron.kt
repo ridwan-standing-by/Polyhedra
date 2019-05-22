@@ -20,10 +20,12 @@ class Octahedron(
     private var vertexOMO: FloatVector2 = FloatVector2(0f, 0f)
     private var vertexMOO: FloatVector2 = FloatVector2(0f, 0f)
 
-    override fun vertices() =
+    override fun screenVertices() =
         listOf(vertexOOP, vertexOPO, vertexPOO, vertexOOM, vertexOMO, vertexMOO)
 
     override fun prepareRender(renderer: PolyhedraAnimationRenderer) {
+        screenPosition = renderer.camera.project(position)
+
         val transform = Quaternion(rotation, orientation)
         vertexOOP = renderer.camera.project(position + Vector3(0.0, 0.0, a).rotate(transform))
         vertexOPO = renderer.camera.project(position + Vector3(0.0, a, 0.0).rotate(transform))
