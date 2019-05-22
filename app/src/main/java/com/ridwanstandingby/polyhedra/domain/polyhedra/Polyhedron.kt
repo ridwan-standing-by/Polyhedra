@@ -20,7 +20,7 @@ abstract class Polyhedron(
 
     private val terminalVelocity = velocity.size()
 
-    protected var screenPosition: FloatVector2 = FloatVector2(0f, 0f)
+    protected var screenPosition: FloatVector2 = FloatVector2.O
     protected abstract fun screenVertices(): List<FloatVector2>
 
     fun update(dt: Double, angularToLinearSpeedRatio: Double) {
@@ -37,9 +37,7 @@ abstract class Polyhedron(
 
     fun handleSwipe(swipe: Swipe, swipePixelRadius: Float, swipeStrength: Double, camera: Camera) {
         if (dist(screenPosition, swipe.screenPosition) < swipePixelRadius) {
-            velocity += camera.inverseTransform(
-                Vector3(swipe.screenVelocity.x.toDouble(), -swipe.screenVelocity.y.toDouble(), 0.0)
-            ) * swipeStrength
+            velocity += camera.inverseProject(swipe.screenVelocity, false) * swipeStrength
         }
     }
 

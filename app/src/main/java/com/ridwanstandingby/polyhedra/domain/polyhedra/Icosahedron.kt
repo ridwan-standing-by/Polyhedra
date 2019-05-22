@@ -16,18 +16,18 @@ class Icosahedron(
 
     private val g = a * (sqrt(5.0) + 1.0) / 2.0
 
-    private var opg: FloatVector2 = FloatVector2(0f, 0f)
-    private var omg: FloatVector2 = FloatVector2(0f, 0f)
-    private var oph: FloatVector2 = FloatVector2(0f, 0f)
-    private var omh: FloatVector2 = FloatVector2(0f, 0f)
-    private var gop: FloatVector2 = FloatVector2(0f, 0f)
-    private var gom: FloatVector2 = FloatVector2(0f, 0f)
-    private var hop: FloatVector2 = FloatVector2(0f, 0f)
-    private var hom: FloatVector2 = FloatVector2(0f, 0f)
-    private var pgo: FloatVector2 = FloatVector2(0f, 0f)
-    private var mgo: FloatVector2 = FloatVector2(0f, 0f)
-    private var pho: FloatVector2 = FloatVector2(0f, 0f)
-    private var mho: FloatVector2 = FloatVector2(0f, 0f)
+    private var opg: FloatVector2 = FloatVector2.O
+    private var omg: FloatVector2 = FloatVector2.O
+    private var oph: FloatVector2 = FloatVector2.O
+    private var omh: FloatVector2 = FloatVector2.O
+    private var gop: FloatVector2 = FloatVector2.O
+    private var gom: FloatVector2 = FloatVector2.O
+    private var hop: FloatVector2 = FloatVector2.O
+    private var hom: FloatVector2 = FloatVector2.O
+    private var pgo: FloatVector2 = FloatVector2.O
+    private var mgo: FloatVector2 = FloatVector2.O
+    private var pho: FloatVector2 = FloatVector2.O
+    private var mho: FloatVector2 = FloatVector2.O
 
     override fun screenVertices() =
         listOf(opg, omg, oph, omh, gop, gom, hop, hom, pgo, mgo, pho, mho)

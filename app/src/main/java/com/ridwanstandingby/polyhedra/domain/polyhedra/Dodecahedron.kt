@@ -17,26 +17,26 @@ class Dodecahedron(
     private val g = a * (sqrt(5.0) + 1.0) / 2.0
     private val s = a * 2.0 / (sqrt(5.0) + 1.0)
 
-    private var mmm: FloatVector2 = FloatVector2(0f, 0f)
-    private var mmp: FloatVector2 = FloatVector2(0f, 0f)
-    private var mpm: FloatVector2 = FloatVector2(0f, 0f)
-    private var mpp: FloatVector2 = FloatVector2(0f, 0f)
-    private var pmm: FloatVector2 = FloatVector2(0f, 0f)
-    private var pmp: FloatVector2 = FloatVector2(0f, 0f)
-    private var ppm: FloatVector2 = FloatVector2(0f, 0f)
-    private var ppp: FloatVector2 = FloatVector2(0f, 0f)
-    private var ohh: FloatVector2 = FloatVector2(0f, 0f)
-    private var ohg: FloatVector2 = FloatVector2(0f, 0f)
-    private var ogh: FloatVector2 = FloatVector2(0f, 0f)
-    private var ogg: FloatVector2 = FloatVector2(0f, 0f)
-    private var hoh: FloatVector2 = FloatVector2(0f, 0f)
-    private var hog: FloatVector2 = FloatVector2(0f, 0f)
-    private var goh: FloatVector2 = FloatVector2(0f, 0f)
-    private var gog: FloatVector2 = FloatVector2(0f, 0f)
-    private var hho: FloatVector2 = FloatVector2(0f, 0f)
-    private var hgo: FloatVector2 = FloatVector2(0f, 0f)
-    private var gho: FloatVector2 = FloatVector2(0f, 0f)
-    private var ggo: FloatVector2 = FloatVector2(0f, 0f)
+    private var mmm: FloatVector2 = FloatVector2.O
+    private var mmp: FloatVector2 = FloatVector2.O
+    private var mpm: FloatVector2 = FloatVector2.O
+    private var mpp: FloatVector2 = FloatVector2.O
+    private var pmm: FloatVector2 = FloatVector2.O
+    private var pmp: FloatVector2 = FloatVector2.O
+    private var ppm: FloatVector2 = FloatVector2.O
+    private var ppp: FloatVector2 = FloatVector2.O
+    private var ohh: FloatVector2 = FloatVector2.O
+    private var ohg: FloatVector2 = FloatVector2.O
+    private var ogh: FloatVector2 = FloatVector2.O
+    private var ogg: FloatVector2 = FloatVector2.O
+    private var hoh: FloatVector2 = FloatVector2.O
+    private var hog: FloatVector2 = FloatVector2.O
+    private var goh: FloatVector2 = FloatVector2.O
+    private var gog: FloatVector2 = FloatVector2.O
+    private var hho: FloatVector2 = FloatVector2.O
+    private var hgo: FloatVector2 = FloatVector2.O
+    private var gho: FloatVector2 = FloatVector2.O
+    private var ggo: FloatVector2 = FloatVector2.O
 
     override fun screenVertices() =
         listOf(mmm, mmp, mpm, mpp, pmm, pmp, ppm, ppp, ohh, ohg, ogh, ogg, hoh, hog, goh, gog, hho, hgo, gho, ggo)

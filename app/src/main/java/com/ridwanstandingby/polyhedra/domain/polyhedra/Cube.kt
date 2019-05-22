@@ -13,14 +13,14 @@ class Cube(
     rotation: Double
 ): Polyhedron(a, position, velocity, orientation, rotation) {
 
-    private var vertexMMM: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexMMP: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexMPM: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexMPP: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexPMM: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexPMP: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexPPM: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexPPP: FloatVector2 = FloatVector2(0f, 0f)
+    private var vertexMMM: FloatVector2 = FloatVector2.O
+    private var vertexMMP: FloatVector2 = FloatVector2.O
+    private var vertexMPM: FloatVector2 = FloatVector2.O
+    private var vertexMPP: FloatVector2 = FloatVector2.O
+    private var vertexPMM: FloatVector2 = FloatVector2.O
+    private var vertexPMP: FloatVector2 = FloatVector2.O
+    private var vertexPPM: FloatVector2 = FloatVector2.O
+    private var vertexPPP: FloatVector2 = FloatVector2.O
 
     override fun screenVertices() =
         listOf(vertexMMM, vertexMMP, vertexMPM, vertexMPP, vertexPMM, vertexPMP, vertexPPM, vertexPPP)

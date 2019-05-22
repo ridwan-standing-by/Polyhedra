@@ -13,12 +13,12 @@ class Octahedron(
     rotation: Double
 ) : Polyhedron(a, position, velocity, orientation, rotation) {
 
-    private var vertexOOP: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexOPO: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexPOO: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexOOM: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexOMO: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexMOO: FloatVector2 = FloatVector2(0f, 0f)
+    private var vertexOOP: FloatVector2 = FloatVector2.O
+    private var vertexOPO: FloatVector2 = FloatVector2.O
+    private var vertexPOO: FloatVector2 = FloatVector2.O
+    private var vertexOOM: FloatVector2 = FloatVector2.O
+    private var vertexOMO: FloatVector2 = FloatVector2.O
+    private var vertexMOO: FloatVector2 = FloatVector2.O
 
     override fun screenVertices() =
         listOf(vertexOOP, vertexOPO, vertexPOO, vertexOOM, vertexOMO, vertexMOO)

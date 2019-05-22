@@ -13,10 +13,10 @@ class Tetrahedron(
     rotation: Double
 ) : Polyhedron(a, position, velocity, orientation, rotation) {
 
-    private var vertexMMP: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexMPM: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexPMM: FloatVector2 = FloatVector2(0f, 0f)
-    private var vertexPPP: FloatVector2 = FloatVector2(0f, 0f)
+    private var vertexMMP: FloatVector2 = FloatVector2.O
+    private var vertexMPM: FloatVector2 = FloatVector2.O
+    private var vertexPMM: FloatVector2 = FloatVector2.O
+    private var vertexPPP: FloatVector2 = FloatVector2.O
 
     override fun screenVertices() =
         listOf(vertexMMP, vertexMPM, vertexPMM, vertexPPP)
