@@ -11,15 +11,25 @@ abstract class Polyhedron(
     var position: Vector3,
     var velocity: Vector3,
     var orientation: Vector3,
-    var rotation: Double,
-    var angularVelocity: Double
+    var rotation: Double
 ) {
+
+    private var angularVelocity: Double = 0.0
+
+    private val terminalVelocity = velocity.size()
 
     abstract fun vertices(): List<FloatVector2>
 
-    fun update(dt: Double) {
+    fun update(dt: Double, angularToLinearSpeedRatio: Double) {
+        angularVelocity = velocity.size() * angularToLinearSpeedRatio
         position += velocity * dt
         rotation += angularVelocity * dt
+    }
+
+    fun decayVelocity(velocityDecayRate: Double) {
+        if (velocity.size() > terminalVelocity) {
+            velocity *= 1.0 / (1.0 + velocityDecayRate * (velocity.size() - terminalVelocity))
+        }
     }
 
     fun handleBounces(camera: Camera, maxSphereScale: Double) {

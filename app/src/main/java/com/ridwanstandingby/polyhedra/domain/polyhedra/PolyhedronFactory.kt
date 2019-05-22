@@ -8,8 +8,7 @@ enum class PolyhedronFactory(
         position: Vector3,
         velocity: Vector3,
         orientation: Vector3,
-        rotation: Double,
-        angularVelocity: Double
+        rotation: Double
     ) -> Polyhedron
 ) {
     TETRAHEDRON(::Tetrahedron),

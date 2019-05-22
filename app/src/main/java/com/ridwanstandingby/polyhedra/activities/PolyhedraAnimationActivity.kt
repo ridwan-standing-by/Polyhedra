@@ -7,6 +7,7 @@ import com.ridwanstandingby.polyhedra.domain.PolyhedraAnimationRenderer
 import com.ridwanstandingby.verve.activities.AnimationActivity
 import com.ridwanstandingby.verve.activities.calculateScreenSize
 import com.ridwanstandingby.verve.activities.createRotationDetector
+import com.ridwanstandingby.verve.activities.createSwipeDetector
 import com.ridwanstandingby.verve.animation.AnimationRenderView
 import com.ridwanstandingby.verve.animation.AnimationRule
 
@@ -17,7 +18,7 @@ class PolyhedraAnimationActivity : AnimationActivity() {
             ::PolyhedraAnimation,
             PolyhedraAnimationParameters(),
             PolyhedraAnimationRenderer(calculateScreenSize()),
-            PolyhedraAnimationInput(createRotationDetector())
+            PolyhedraAnimationInput(createSwipeDetector(), createRotationDetector())
         )
     )
 }

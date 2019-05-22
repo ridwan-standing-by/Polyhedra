@@ -11,9 +11,8 @@ class Icosahedron(
     position: Vector3,
     velocity: Vector3,
     orientation: Vector3,
-    rotation: Double,
-    angularVelocity: Double
-) : Polyhedron(a, position, velocity, orientation, rotation, angularVelocity) {
+    rotation: Double
+) : Polyhedron(a, position, velocity, orientation, rotation) {
 
     private val g = a * (sqrt(5.0) + 1.0) / 2.0
 

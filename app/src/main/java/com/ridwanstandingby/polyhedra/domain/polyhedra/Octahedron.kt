@@ -10,9 +10,8 @@ class Octahedron(
     position: Vector3,
     velocity: Vector3,
     orientation: Vector3,
-    rotation: Double,
-    angularVelocity: Double
-) : Polyhedron(a, position, velocity, orientation, rotation, angularVelocity) {
+    rotation: Double
+) : Polyhedron(a, position, velocity, orientation, rotation) {
 
     private var vertexOOP: FloatVector2 = FloatVector2(0f, 0f)
     private var vertexOPO: FloatVector2 = FloatVector2(0f, 0f)

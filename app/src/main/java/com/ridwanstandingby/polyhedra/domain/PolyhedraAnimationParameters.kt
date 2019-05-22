@@ -11,13 +11,15 @@ import kotlin.random.Random
 class PolyhedraAnimationParameters(
     val numberOfPolyhedra: Int = 100,
     val maxSphereScale: Double = 2.0,
+    val swipePixelRadius: Float = 120f,
+    val swipeStrength: Double = 0.2,
+    val velocityDecayRate: Double = 0.000008,
+    val angularToLinearSpeedRatio: Double = 0.01,
     private val cubeLengthMin: Double = 12.0,
     private val cubeLengthMax: Double = 120.0,
     private val cubeLengthSkew: Double = 0.05,
-    private val velocityMin: Double = 10.0,
-    private val velocityMax: Double = 400.0,
-    private val angularVelocityMin: Double = 0.2,
-    private val angularVelocityMax: Double = 4.0
+    private val velocityMin: Double = 18.0,
+    private val velocityMax: Double = 360.0
 ) : AnimationParameters() {
 
     private fun randomSph2() =
@@ -46,7 +48,6 @@ class PolyhedraAnimationParameters(
         Vector3(0.0, 0.0, 0.0),
         (randomSph2() * Random.nextDouble(velocityMin, velocityMax)).resolve(),
         randomSph2().resolve(),
-        Random.nextDouble(0.0, Math.PI * 2),
-        Random.nextDouble(angularVelocityMin, angularVelocityMax)
+        Random.nextDouble(0.0, Math.PI * 2)
     )
 }
