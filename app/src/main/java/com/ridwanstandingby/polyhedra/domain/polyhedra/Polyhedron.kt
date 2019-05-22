@@ -3,7 +3,9 @@ package com.ridwanstandingby.polyhedra.domain.polyhedra
 import com.ridwanstandingby.polyhedra.domain.PolyhedraAnimationRenderer
 import com.ridwanstandingby.verve.math.FloatVector2
 import com.ridwanstandingby.verve.math.Vector3
+import com.ridwanstandingby.verve.math.dist
 import com.ridwanstandingby.verve.render.Camera
+import com.ridwanstandingby.verve.sensor.swipe.Swipe
 import kotlin.math.max
 
 abstract class Polyhedron(
@@ -18,8 +20,8 @@ abstract class Polyhedron(
 
     private val terminalVelocity = velocity.size()
 
-    var screenPosition: FloatVector2 = FloatVector2(0f, 0f)
-    abstract fun screenVertices(): List<FloatVector2>
+    protected var screenPosition: FloatVector2 = FloatVector2(0f, 0f)
+    protected abstract fun screenVertices(): List<FloatVector2>
 
     fun update(dt: Double, angularToLinearSpeedRatio: Double) {
         angularVelocity = velocity.size() * angularToLinearSpeedRatio
@@ -30,6 +32,14 @@ abstract class Polyhedron(
     fun decayVelocity(velocityDecayRate: Double) {
         if (velocity.size() > terminalVelocity) {
             velocity *= 1.0 / (1.0 + velocityDecayRate * (velocity.size() - terminalVelocity))
+        }
+    }
+
+    fun handleSwipe(swipe: Swipe, swipePixelRadius: Float, swipeStrength: Double, camera: Camera) {
+        if (dist(screenPosition, swipe.screenPosition) < swipePixelRadius) {
+            velocity += camera.inverseTransform(
+                Vector3(swipe.screenVelocity.x.toDouble(), -swipe.screenVelocity.y.toDouble(), 0.0)
+            ) * swipeStrength
         }
     }
 

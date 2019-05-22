@@ -1,9 +1,6 @@
 package com.ridwanstandingby.polyhedra.domain
 
 import com.ridwanstandingby.verve.animation.Animation
-import com.ridwanstandingby.verve.math.Vector3
-import com.ridwanstandingby.verve.math.dist
-import com.ridwanstandingby.verve.sensor.swipe.Swipe
 
 class PolyhedraAnimation(
     parameters: PolyhedraAnimationParameters,
@@ -23,10 +20,14 @@ class PolyhedraAnimation(
     }
 
     override fun update(dt: Double) {
-        renderer.camera.updateCamera(input.getOrientation())
         renderer.lines = mutableListOf()
+        renderer.camera.updateCamera(input.getOrientation())
 
-        input.getSwipes().forEach { it.resolveSwipe() }
+        input.getSwipes().forEach { swipe ->
+            polyhedra.forEach { polyhedron ->
+                polyhedron.handleSwipe(swipe, parameters.swipePixelRadius, parameters.swipeStrength, renderer.camera)
+            }
+        }
 
         polyhedra.forEach {
             it.update(dt, parameters.angularToLinearSpeedRatio)
@@ -34,15 +35,5 @@ class PolyhedraAnimation(
             it.handleBounces(renderer.camera, parameters.maxSphereScale)
             it.prepareRender(renderer)
         }
-    }
-
-    private fun Swipe.resolveSwipe() {
-        polyhedra
-            .filter { dist(it.screenPosition, this.screenPosition) < parameters.swipePixelRadius }
-            .forEach {
-                it.velocity += renderer.camera.inverseTransform(
-                    Vector3(this.screenVelocity.x.toDouble(), -this.screenVelocity.y.toDouble(), 0.0)
-                ) * parameters.swipeStrength
-            }
     }
 }
