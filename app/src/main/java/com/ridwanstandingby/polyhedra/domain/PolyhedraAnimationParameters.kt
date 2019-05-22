@@ -1,6 +1,6 @@
 package com.ridwanstandingby.polyhedra.domain
 
-import com.ridwanstandingby.polyhedra.domain.polyhedra.PolyhedronFactory
+import com.ridwanstandingby.polyhedra.domain.polyhedra.PolyhedronType
 import com.ridwanstandingby.verve.animation.AnimationParameters
 import com.ridwanstandingby.verve.math.SphericalVector2
 import com.ridwanstandingby.verve.math.Vector3
@@ -24,17 +24,17 @@ class PolyhedraAnimationParameters(
 
     fun generateRandomPolyhedron() = generateRandom(randomPolyhedronType())
 
-    private fun randomPolyhedronType(): PolyhedronFactory =
+    private fun randomPolyhedronType(): PolyhedronType =
         when (Random.nextInt(10)) {
-            in 0..1 -> PolyhedronFactory.TETRAHEDRON
-            in 2..4 -> PolyhedronFactory.CUBE
-            in 5..7 -> PolyhedronFactory.OCTAHEDRON
-            8 -> PolyhedronFactory.DODECAHEDRON
-            9 -> PolyhedronFactory.ICOSAHEDRON
-            else -> PolyhedronFactory.CUBE
+            in 0..1 -> PolyhedronType.TETRAHEDRON
+            in 2..4 -> PolyhedronType.CUBE
+            in 5..7 -> PolyhedronType.OCTAHEDRON
+            8 -> PolyhedronType.DODECAHEDRON
+            9 -> PolyhedronType.ICOSAHEDRON
+            else -> PolyhedronType.CUBE
         }
 
-    private fun generateRandom(polyhedron: PolyhedronFactory) = polyhedron.constructor(
+    private fun generateRandom(polyhedron: PolyhedronType) = polyhedron.constructor(
         -log(
             exp(-cubeLengthMin * cubeLengthSkew) - Random.nextDouble() * (exp(
                 -cubeLengthMin * cubeLengthSkew
